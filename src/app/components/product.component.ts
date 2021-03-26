@@ -27,6 +27,8 @@ export class ProductComponent implements OnInit, DoCheck, OnDestroy {
   }; // Recibir una propiedad desde otro componente
   @Output() productClicked: EventEmitter<any> = new EventEmitter();
 
+  today = new Date();
+
   constructor() {
     console.log('1.-constructor');
   }
