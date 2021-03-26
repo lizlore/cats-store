@@ -12,9 +12,12 @@ import { ProductsComponent } from './products/products.component';
 import { ContactComponent } from './contact/contact.component';
 import { HomeComponent } from './home/home.component';
 import { DemoComponent } from './demo/demo.component';
+import { HeaderComponent } from './home/header/header.component';
+import { BannerComponent } from './home/banner/banner.component';
+import { FooterComponent } from './home/footer/footer.component';
 
 @NgModule({
-  declarations: [AppComponent, ProductComponent, CartComponent, ExponentialPipe, HighlightDirective, ProductsComponent, ContactComponent, HomeComponent, DemoComponent],
+  declarations: [AppComponent, ProductComponent, CartComponent, ExponentialPipe, HighlightDirective, ProductsComponent, ContactComponent, HomeComponent, DemoComponent, HeaderComponent, BannerComponent, FooterComponent],
   imports: [BrowserModule, AppRoutingModule, FormsModule],
   providers: [],
   bootstrap: [AppComponent],
