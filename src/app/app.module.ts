@@ -10,17 +10,29 @@ import { ExponentialPipe } from './exponential.pipe';
 import { HighlightDirective } from './highlight.directive';
 import { ProductsComponent } from './products/products.component';
 import { ContactComponent } from './contact/contact.component';
-import { HomeComponent } from './home/home.component';
 import { DemoComponent } from './demo/demo.component';
 import { HeaderComponent } from './home/header/header.component';
-import { BannerComponent } from './home/banner/banner.component';
 import { FooterComponent } from './home/footer/footer.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { DetailComponent } from './detail/detail.component';
 import { LayoutComponent } from './layout/layout.component';
 
 @NgModule({
-  declarations: [AppComponent, ProductComponent, CartComponent, ExponentialPipe, HighlightDirective, ProductsComponent, ContactComponent, HomeComponent, DemoComponent, HeaderComponent, BannerComponent, FooterComponent, PageNotFoundComponent, DetailComponent, LayoutComponent],
+  declarations: [
+    AppComponent,
+    ProductComponent,
+    CartComponent,
+    ExponentialPipe,
+    HighlightDirective,
+    ProductsComponent,
+    ContactComponent,
+    DemoComponent,
+    HeaderComponent,
+    FooterComponent,
+    PageNotFoundComponent,
+    DetailComponent,
+    LayoutComponent,
+  ],
   imports: [BrowserModule, AppRoutingModule, FormsModule],
   providers: [],
   bootstrap: [AppComponent],
