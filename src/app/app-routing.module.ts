@@ -1,10 +1,10 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes, PreloadAllModules } from '@angular/router';
-import { ProductsComponent } from './products/products.component';
+import { ProductsComponent } from './product/components/products/products.component';
 import { ContactComponent } from './contact/contact.component';
 import { DemoComponent } from './demo/demo.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
-import { DetailComponent } from './detail/detail.component';
+import { DetailComponent } from './product/components/detail/detail.component';
 import { LayoutComponent } from './layout/layout.component';
 
 const routes: Routes = [
