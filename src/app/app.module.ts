@@ -5,7 +5,6 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { FormsModule } from '@angular/forms';
 import { CartComponent } from './cart/cart.component';
-import { ContactComponent } from './contact/contact.component';
 import { DemoComponent } from './demo/demo.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { LayoutComponent } from './layout/layout.component';
@@ -20,7 +19,6 @@ import { MaterialModule } from './material/material.module';
   declarations: [
     AppComponent,
     CartComponent,
-    ContactComponent,
     DemoComponent,
     PageNotFoundComponent,
     LayoutComponent,
