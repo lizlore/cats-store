@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
 import { ProductsService } from '../../../core/services/products/products.service';
+import { Product } from './../../../product.model';
 
 @Component({
   selector: 'app-detail',
@@ -26,7 +27,47 @@ export class DetailComponent implements OnInit {
   ngOnInit(): void {
     this.route.params.subscribe((params: Params) => {
       const id = params.id;
-      this.product = this.productsService.getProduct(id);
+      this.fetchProduct(id);
+      // this.product = this.productsService.getProduct(id);
+    });
+  }
+
+  fetchProduct(id: string) {
+    this.productsService.getProduct(id).subscribe((product) => {
+      console.log(product);
+      this.product = product;
+    });
+  }
+
+  createProduct() {
+    const newProduct: Product = {
+      id: '222',
+      title: 'desde angular',
+      image: 'assets/images/gato2.jpeg',
+      price: 0,
+      description: 'nuevo',
+    };
+    this.productsService.createProduct(newProduct).subscribe((product) => {
+      console.log(product);
+    });
+  }
+
+  updateProduct() {
+    const updateProduct: Partial<Product> = {
+      image: 'assets/images/gato2.jpeg',
+      price: 10,
+      description: 'edicion',
+    };
+    this.productsService
+      .updateProduct('2', updateProduct)
+      .subscribe((product) => {
+        console.log(product);
+      });
+  }
+
+  deleteProduct() {
+    this.productsService.deleteProduct('222').subscribe((rta) => {
+      console.log(rta);
     });
   }
 }
