@@ -3,6 +3,7 @@ import { RouterModule, Routes, PreloadAllModules } from '@angular/router';
 import { DemoComponent } from './demo/demo.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { LayoutComponent } from './layout/layout.component';
+import { AdminGuard } from './guardians/admin.guard';
 
 const routes: Routes = [
   {
@@ -26,6 +27,7 @@ const routes: Routes = [
       },
       {
         path: 'contact',
+        canActivate: [AdminGuard],
         loadChildren: () =>
           import('./contact/contact.module').then((m) => m.ContactModule),
       },
