@@ -1,45 +1,54 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute, Params } from '@angular/router';
 
 import { ProductsService } from './../../../core/services/products/products.service';
 import { MyValidators } from './../../../utils/custom-validators';
 
 @Component({
-  selector: 'app-form-product',
-  templateUrl: './form-product.component.html',
-  styleUrls: ['./form-product.component.scss'],
+  selector: 'app-product-edit',
+  templateUrl: './product-edit.component.html',
+  styleUrls: ['./product-edit.component.scss'],
 })
-export class FormProductComponent implements OnInit {
+export class ProductEditComponent implements OnInit {
   form: any;
+  id: any;
 
   constructor(
     private FormBuilder: FormBuilder,
     private productsService: ProductsService,
-    private Router: Router
+    private router: Router,
+    private activeRoute: ActivatedRoute
   ) {
     this.buildForm();
-    // this.form = new FormGroup();
   }
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.activeRoute.params.subscribe((params: Params) => {
+      this.id = params.id;
+      this.productsService.getProduct(this.id).subscribe((product) => {
+        this.form.patchValue(product);
+      });
+    });
+  }
 
   saveProduct(event: Event) {
-    console.log('save en add new');
+    console.log('save en edit', this.id);
     event.preventDefault();
 
     if (this.form.valid) {
       const product = this.form.value;
-      this.productsService.createProduct(product).subscribe((newProduct) => {
-        console.log(newProduct);
-        this.Router.navigate(['./admin/products']); // redirija a la lista de productos una vez creada
-      });
+      this.productsService
+        .updateProduct(this.id, product)
+        .subscribe((newProduct) => {
+          console.log(newProduct);
+          this.router.navigate(['./admin/products']); // redirija a la lista de productos una vez creada
+        });
     }
   }
 
   private buildForm() {
     this.form = this.FormBuilder.group({
-      id: ['', [Validators.required]],
       title: ['', [Validators.required]],
       price: ['', [Validators.required, MyValidators.isPriceValid]],
       image: [''],
